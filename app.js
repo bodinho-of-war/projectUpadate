@@ -5,19 +5,29 @@ let conn = {
     database : 'teste_update'
 };
 
-let pessoa = {
-    nome : 'Luan',
-    sobrenome: 'Portela'
-};
-
 const knex = require('knex')( { client: 'mysql', connection: conn});
 
-knex('pessoa')
-  .insert(pessoa)
-  .then(() => {
-    knex.destroy();
-    console.log(`${pessoa.nome} ${pessoa.sobrenome} gravado com sucesso`)
-  });
+/******************************MOCK DE DADOS************************************
+
+let pessoas = [
+  {
+      nome : 'Lucas',
+      sobrenome: 'Portela'
+  },
+  {
+      nome : 'Luana',
+      sobrenome: 'Portela'
+  },
+  {
+      nome : 'Luzia',
+      sobrenome: 'Portela'
+  },
+  {
+      nome : 'Luandra',
+      sobrenome: 'Portela'
+  }
+];
+*******************************************************************************/
 
 /**************************CREATE DATA BASE*************************************
 
@@ -37,3 +47,24 @@ knex.raw('CREATE DATABASE teste_update')
   });
 
 *******************************************************************************/
+
+/*******************************INSERT DE DADOS*********************************
+pessoas.forEach( pessoa => {
+  knex('pessoa')
+    .insert(pessoa)
+    .then(() => {
+      knex.destroy();
+      console.log(`${pessoa.nome} ${pessoa.sobrenome} gravado com sucesso`)
+    });
+});
+*******************************************************************************/
+
+knex('pessoa')
+  .where('nome','=','Luan')
+  .update({
+    sobrenome : 'Bonitão'
+  })
+  .then(() => {
+    knex.destroy();
+    console.log(`1 item atualizados com sucesso`);
+  });
