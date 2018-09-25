@@ -17,6 +17,7 @@
   "author": "Luan Portela Batbosa\u001b[D\u001b[D\u001b[D\u001b[r\u001b[C\u001b[C\u001b[C\u001b[C",
   "license": "ISC",
   "dependencies": {
-    "knex": "^0.15.2"
+    "knex": "^0.15.2",
+    "mysql": "^2.16.0"
   }
 }
