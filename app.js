@@ -6,9 +6,12 @@ let conn = {
 };
 
 const knex = require('knex')( { client: 'mysql', connection: conn});
+const fs = require('fs');
+
+let file = fs.readFile('')
+
 
 /******************************MOCK DE DADOS************************************
-
 let pessoas = [
   {
       nome : 'Lucas',
@@ -30,7 +33,6 @@ let pessoas = [
 *******************************************************************************/
 
 /**************************CREATE DATA BASE*************************************
-
 knex.raw('CREATE DATABASE teste_update')
   .then(() => {
     knex.destroy();
@@ -45,7 +47,6 @@ knex.raw('CREATE DATABASE teste_update')
         knex.destroy();
     });
   });
-
 *******************************************************************************/
 
 /*******************************INSERT DE DADOS*********************************
@@ -59,6 +60,7 @@ pessoas.forEach( pessoa => {
 });
 *******************************************************************************/
 
+/*******************************UPDATE DADOS************************************
 knex('pessoa')
   .where('nome','=','Luan')
   .update({
@@ -68,3 +70,4 @@ knex('pessoa')
     knex.destroy();
     console.log(`1 item atualizados com sucesso`);
   });
+*******************************************************************************/
