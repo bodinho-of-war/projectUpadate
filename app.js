@@ -1,10 +1,25 @@
 let conn = {
     host : '127.0.0.1',
     user : 'root',
-    password : 'password'
+    password : 'password',
+    database : 'teste_update'
 };
 
-let knex = require('knex')( { client: 'mysql', connection: conn});
+let pessoa = {
+    nome : 'Luan',
+    sobrenome: 'Portela'
+};
+
+const knex = require('knex')( { client: 'mysql', connection: conn});
+
+knex('pessoa')
+  .insert(pessoa)
+  .then(() => {
+    knex.destroy();
+    console.log(`${pessoa.nome} ${pessoa.sobrenome} gravado com sucesso`)
+  });
+
+/**************************CREATE DATA BASE*************************************
 
 knex.raw('CREATE DATABASE teste_update')
   .then(() => {
@@ -20,3 +35,5 @@ knex.raw('CREATE DATABASE teste_update')
         knex.destroy();
     });
   });
+
+*******************************************************************************/
